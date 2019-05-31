@@ -13,7 +13,7 @@ export class AddUserComponent implements OnInit {
   }
 
   submitForm(){
-
+    console.log("Submitted")
   }
 
 }

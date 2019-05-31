@@ -23,4 +23,8 @@ describe('UserListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be defined', () => {
+    expect(component).toBeDefined();
+  });
 });
