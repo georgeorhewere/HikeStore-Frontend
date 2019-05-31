@@ -27,4 +27,13 @@ describe('UserListComponent', () => {
   it('should be defined', () => {
     expect(component).toBeDefined();
   });
+
+  it('user array cannot be null', () => {
+    expect(component.users).toBeDefined();
+  });
+
+  it('user array can be empty', () => {
+    expect(component.users.length).toBeGreaterThanOrEqual(0);
+  });
+
 });
