@@ -1,0 +1,8 @@
+<div class="row text-white m-2">
+<!--   <div class="col-4 p-2 text-dark">
+    <app-add-user (addNewUser)="addUser($event)" [model]="selectedUser"></app-add-user>
+  </div> -->
+  <div class="col-lg-12 col-md-12">
+    <app-user-list [model]="service" (editUser)="editUser($event)" (deleteUser)="deleteUser($event)"></app-user-list>
+  </div>
+</div>

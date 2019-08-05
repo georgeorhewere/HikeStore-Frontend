@@ -1,0 +1,76 @@
+
+<form novalidate  [formGroup]="form" (ngSubmit)="submitForm(form)">
+
+  <div class="bg-danger text-white p-2 mb-2" *ngIf="formSubmitted && form.invalid">
+    There are problems with the form
+    <ul>
+      <li *ngFor="let error of form.getFormValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <label>First Name</label>
+    <input class="form-control" name="firstName" [(ngModel)]="newUser.firstName"
+           formControlName="firstName" />
+
+    <ul class="text-danger list-unstyled"  *ngIf="(formSubmitted || form.controls['firstName'].dirty) &&
+     form.controls['firstName'].invalid">
+
+      <li *ngFor="let error of form.controls['firstName'].getValidationMessages()">
+        {{error}}
+      </li>
+
+    </ul>
+
+  </div>
+
+  <div class="form-group">
+    <label>Last Name</label>
+
+    <input class="form-control" name="lastName" [(ngModel)]="newUser.lastName"
+           formControlName="lastName" />
+
+    <ul class="text-danger list-unstyled"
+        *ngIf="(formSubmitted || form.controls['lastName'].dirty) &&
+form.controls['lastName'].invalid">
+      <li *ngFor="let error of form.controls['lastName']
+.getValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+
+  </div>
+
+
+
+  <div class="form-group">
+
+    <label>Email</label>
+
+    <input class="form-control" name="email" [(ngModel)]="newUser.email"
+           formControlName="email" />
+
+    <ul class="text-danger list-unstyled"
+        *ngIf="(formSubmitted || form.controls['email'].dirty) &&
+form.controls['email'].invalid">
+      <li *ngFor="let error of form.controls['email']
+.getValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+
+  </div>
+
+
+
+
+
+  <button class="btn btn-primary" type="submit"
+          [disabled]="formSubmitted && form.invalid"
+          [class.btn-secondary]="formSubmitted && form.invalid">
+    Create
+  </button>
+
+</form>
