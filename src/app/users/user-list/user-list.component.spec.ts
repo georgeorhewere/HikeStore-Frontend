@@ -2,14 +2,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
 import { AddUserComponent } from '../add-user/add-user.component';
+import {UserRepositoryService} from "../../models/repository/user.repository.service";
+import { StaticdbService } from 'src/app/models/datasource/staticdb.service';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
+  let service:UserRepositoryService = new UserRepositoryService(new StaticdbService());
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserListComponent,AddUserComponent ]
+      declarations: [ UserListComponent],
+      providers: [
+        { provide: UserRepositoryService, useValue: service }
+        ]
     })
     .compileComponents();
   }));
@@ -17,6 +23,8 @@ describe('UserListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
+    component.dataModel = service;
+  
     fixture.detectChanges();
   });
 
@@ -29,11 +37,11 @@ describe('UserListComponent', () => {
   });
 
   it('user array cannot be null', () => {
-    expect(component.users).toBeDefined();
+    expect(component.getUsers()).toBeDefined();
   });
 
   it('user array can be empty', () => {
-    expect(component.users.length).toBeGreaterThanOrEqual(0);
+    expect(component.getUsers().length).toBeGreaterThanOrEqual(0);
   });
 
 });

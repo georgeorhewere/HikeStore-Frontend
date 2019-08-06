@@ -19,6 +19,6 @@ getTestBed().initTestEnvironment(
 //const context = require.context('./', true, /\.spec\.ts$/);
 
 //single test -- specify the spec file
-const context = require.context('./', true, /user-list.component.spec\.ts$/);
+const context = require.context('./', true, /add-user.component.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
