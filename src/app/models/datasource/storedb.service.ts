@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../user';
 import { HttpHeaders } from '@angular/common/http';
 import {IConnectionService} from "./iconnection";
+import { environment } from 'src/environments/environment';
 
 
 //const PROTOCOL = 'https';
@@ -15,16 +16,18 @@ import {IConnectionService} from "./iconnection";
 export class StoreDBService implements IConnectionService {
 
   public baseUrl: string;
-  public PROTOCOL = 'https';
-  public PORT = 44338;
+  public PROTOCOL = 'http';
+  public PORT = 89; 
   /*auth_token: string;*/
 
   constructor(private http: HttpClient){
-    this.baseUrl = `${this.PROTOCOL}://${location.hostname}:${this.PORT}/api/`;
-    console.log(this.baseUrl);
+    this.baseUrl = `${this.PROTOCOL}://${environment.apiUrl}:${this.PORT}/api/`;
+    //this.baseUrl = `${this.PROTOCOL}://${location.hostname}:${this.PORT}/api/`;
+    
   }
 
   getUsers(): Observable<User[]> {
+
     return this.http.get<User[]>(this.baseUrl + 'users');
   }
 

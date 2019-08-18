@@ -24,7 +24,7 @@ export class StaticdbService implements IConnectionService{
 
     //validate userId
     this.counter++;
-    user.id = this.counter;
+    user.userId = this.counter;
     this.users.push(user);
     return from([user]);
   }
@@ -32,7 +32,7 @@ export class StaticdbService implements IConnectionService{
     throw new Error("Method not implemented.");
   }
   deleteUser(id: number) {
-    let user = this.users.filter(usr => usr.id == id)[0];
+    let user = this.users.filter(usr => usr.userId == id)[0];
   
     if(user != null){
       this.users.splice(this.users.indexOf(user),1)
@@ -50,6 +50,6 @@ export class StaticdbService implements IConnectionService{
       );
 
 
-      this.counter = this.users[this.users.length - 1].id + 1;
+      this.counter = this.users[this.users.length - 1].userId + 1;
   }
 }

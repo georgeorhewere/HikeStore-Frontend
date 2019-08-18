@@ -32,7 +32,7 @@
                   <tbody>
                       <ng-container *ngFor="let user of getUsers();let i = index; let odd = odd;let even = even" >                  
                     <tr>
-                        <td [innerHtml]="user.id"></td>
+                        <td [innerHtml]="user.userId"></td>
                         <td [innerHtml]='user.firstName'></td>
                         <td [innerHtml]="user.lastName"></td>
                         <td [innerHtml]="user.email"></td>

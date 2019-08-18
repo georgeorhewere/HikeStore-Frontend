@@ -39,6 +39,7 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers(): User[] {
+    
     return this.dataModel.getUsers();
   }
 

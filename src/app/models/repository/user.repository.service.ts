@@ -9,9 +9,10 @@ import { StaticdbService } from '../datasource/staticdb.service';
 export class UserRepositoryService {
 
   private users: User[] = [];
-   constructor(private db:StaticdbService )
+   constructor(private db:StoreDBService)
    {
      db.getUsers().subscribe((data) => {
+       
        this.users = data;
      });
   }
@@ -25,7 +26,7 @@ export class UserRepositoryService {
   }
 
   getUser(id:number):User{
-     return this.users.find(u => u.id == id);
+     return this.users.find(u => u.userId == id);
   }
 
   deleteUser(id:number){
