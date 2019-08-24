@@ -4,7 +4,7 @@ import {User} from "../../models/user";
 import {NgForm} from "@angular/forms";
 import {UserRepositoryService} from "../../models/repository/user.repository.service";
 import {Observable} from "rxjs";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -15,23 +15,20 @@ export class UserComponent implements OnInit {
 
   form:UserFormGroup;
   newUser = new User();
+  editing = false;
 
-  /* @Output("addNewUser")
-  newUserEvent = new EventEmitter<User>();
 
-  @Input("model")
-  dataModel: Observable<User>; */
-
-  constructor(private repository:UserRepositoryService, private router:Router) { }
+  constructor(private repository:UserRepositoryService, private activeRoute:ActivatedRoute, private router:Router) { 
+    var id = activeRoute.snapshot.params["id"];
+      if(id){
+        this.editing = true;
+        this.newUser = repository.getUser(id);
+      }
+}
+  
 
   ngOnInit() {
-    this.form = new UserFormGroup();
-
-    /* this.dataModel.subscribe((c)=>{
-      console.log(c);
-      console.log("Model value");
-      this.newUser = c ;
-    }); */
+    this.form = new UserFormGroup();    
 
   }
 
@@ -42,8 +39,15 @@ export class UserComponent implements OnInit {
 
     if (form.valid) {
       console.log("Save User")
+      
       try{
+        if(this.editing){
+          //this.repository
+          console.log("Update User")
+          this.repository.updateUser(this.newUser)
+        }else{
       this.repository.addUser(this.newUser);
+        }
       this.router.navigateByUrl("/users");
 
       }catch(e){

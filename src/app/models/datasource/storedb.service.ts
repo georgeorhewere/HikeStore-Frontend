@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { User } from '../user';
 import { HttpHeaders } from '@angular/common/http';
 import {IConnectionService} from "./iconnection";
 import { environment } from 'src/environments/environment';
+
 
 
 //const PROTOCOL = 'https';
@@ -18,10 +19,10 @@ export class StoreDBService implements IConnectionService {
   public baseUrl: string;
   public PROTOCOL = 'http';
   public PORT = 89; 
-  /*auth_token: string;*/
+  /*auth_token: string;*/ 
 
   constructor(private http: HttpClient){
-    this.baseUrl = `${this.PROTOCOL}://${environment.apiUrl}:${this.PORT}/api/`;
+    this.baseUrl = `${this.PROTOCOL}://${environment.apiUrl}/api/`;
     //this.baseUrl = `${this.PROTOCOL}://${location.hostname}:${this.PORT}/api/`;
     
   }
@@ -32,9 +33,23 @@ export class StoreDBService implements IConnectionService {
   }
 
   addUser(user: User): Observable<User>
-  {
-    console.log(user)
+  {    
     return this.http.post<User>(this.baseUrl + 'users', user);
+  }
+  updateUser(user: User): any
+  { 
+    return $.ajax({
+      url: this.baseUrl+'users/'+user.userId,
+      data:JSON.stringify(user),      
+      headers:{ 'content-type':"application/json"},
+      type: 'PUT',
+      success: function(result) {
+          // Do something with the result
+          console.log("updated "+ user.userId)
+          
+      }
+    });   
+    //return this.http.put<User>(this.baseUrl + 'users', user);
   }
   getUser(id: number): Observable<User>
   {
@@ -42,10 +57,20 @@ export class StoreDBService implements IConnectionService {
     return this.http.get<User>(this.baseUrl + 'users/'+ id);
   }
 
-  deleteUser(id: number)
+  deleteUser(id: number) :any
   {
     console.log(id)
-    return this.http.delete<User>(this.baseUrl + 'users/'+  id);
+    return $.ajax({
+      url: this.baseUrl+'users/'+id,
+      type: 'DELETE',
+      success: function(result) {
+          // Do something with the result
+          console.log("deleted "+ id)
+          
+      }
+  })
+  /* */
+    //return this.http.delete<User>(this.baseUrl + 'users/'+  id);
   }
 
   private getOptions() {

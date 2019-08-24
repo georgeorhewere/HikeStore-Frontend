@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserRepositoryService} from '../../models/repository/user.repository.service';
 import {User} from "../../models/user";
 import {from, Observable} from "rxjs";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-home',
@@ -12,7 +13,7 @@ export class UserHomeComponent implements OnInit {
 
   selectedUser: Observable<User>;
 
-  constructor(public service: UserRepositoryService) {
+  constructor(public service: UserRepositoryService, private router:Router) {
 
   }
 
@@ -31,7 +32,9 @@ export class UserHomeComponent implements OnInit {
   }
   deleteUser(id:number){
     this.service.deleteUser(id)
-    //console.log(this.selectedUser)
+    console.log("deleted users "+ id)
+
+    
   }
 
 

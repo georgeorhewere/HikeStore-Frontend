@@ -7,9 +7,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path:"home", component: DashboardComponent},
-  { path:"user/edit", component: UserComponent},
-  { path:"user/add", component: UserComponent},
-  { path:"listusers", component: UserListComponent},
+  { path:"user/edit/:id", component: UserComponent},
+  { path:"user/add", component: UserComponent},  
   { path:"users", component: UserHomeComponent},  
   { path:"**", redirectTo:"/home"},
 ];

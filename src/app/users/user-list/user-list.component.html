@@ -46,7 +46,10 @@
                         <td [innerHtml]='user.firstName'></td>
                         <td [innerHtml]="user.lastName"></td>
                         <td [innerHtml]="user.email"></td>
-                        <td ><a routerLink="/user/edit">Edit</a></td>
+                        <td >
+                          <div style="display: inline; margin-right: 5px"><a routerLink="/user/edit/{{user.userId}}">Edit</a></div>  
+                          <div style="display: inline;color: #9c27b0;"><a (click)="deleteUser(user.userId)">Delete</a></div>
+                        </td>
                       </tr>
                     </ng-container>
                     

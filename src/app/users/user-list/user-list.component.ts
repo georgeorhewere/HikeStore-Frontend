@@ -38,8 +38,9 @@ export class UserListComponent implements OnInit {
      return this.dataModel.getUser(key);
   }
 
-  getUsers(): User[] {
-    
+  getUsers(): User[] 
+  {
+   console.log("get users") 
     return this.dataModel.getUsers();
   }
 

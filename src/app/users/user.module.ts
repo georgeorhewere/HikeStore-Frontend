@@ -6,6 +6,7 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import * as $ from 'jquery'
 
 @NgModule({
   declarations: [UserListComponent,UserComponent,UserHomeComponent],
@@ -15,6 +16,6 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     RouterModule
   ],
-  exports:[UserListComponent,UserComponent,UserHomeComponent]
+  exports:[UserComponent,UserHomeComponent]
 })
 export class UserModule { }
