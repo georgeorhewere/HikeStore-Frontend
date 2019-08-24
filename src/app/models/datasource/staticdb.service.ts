@@ -3,10 +3,14 @@ import { IConnectionService } from './iconnection';
 import { User } from '../user';
 import { Observable, from } from 'rxjs';
 import { NgForOf } from '@angular/common';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+export class IDBService {
+
+}
 export class StaticdbService implements IConnectionService{
  
   PROTOCOL: string;
@@ -15,6 +19,7 @@ export class StaticdbService implements IConnectionService{
 
   private counter:number;
  
+
   private users: User[] = [];
   
   getUsers(): Observable<User[]> {
@@ -39,8 +44,19 @@ export class StaticdbService implements IConnectionService{
     }
   }
  
-
-  constructor() { 
+  private getOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }) };
+  }
+  
+  updateUser(user: User): any
+  { 
+    
+  }
+  constructor(private http: HttpClient) { 
+    
       this.users= new Array<User>( new User(1, "Kenny", "Rogers", "kennyrg@gmail.com"),
       new User(2,"Barry", "White", "barryr@gmail.com") ,
       new User(3, "Jane", "Fonda", "janefonda@gmail.com"),
@@ -53,3 +69,5 @@ export class StaticdbService implements IConnectionService{
       this.counter = this.users[this.users.length - 1].userId + 1;
   }
 }
+
+

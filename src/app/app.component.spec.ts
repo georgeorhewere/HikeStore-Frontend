@@ -1,8 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { UserListComponent } from './users/user-list/user-list.component';
-import { AddUserComponent } from './users/add-user/add-user.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
