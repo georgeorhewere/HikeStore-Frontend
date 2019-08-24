@@ -3,14 +3,21 @@
   <div class="row">
       <div class="col-md-12">
           <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title ">Users</h4>
-              <p class="card-category">Registered store users. 
-                <span class="pull-right"> 
-                    <i class="material-icons">add</i><span>add user</span>
-                  
-                </span>
-                </p>              
+            <div class="card-header card-header-tabs card-header-primary">               
+                <div class="nav-tabs-navigation ">
+                    <div class="nav-tabs-wrapper">
+                      <span class="nav-tabs-title">Users </span>
+                      <ul class="nav nav-tabs pull-right" data-tabs="tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active" routerLink="/user/add" data-toggle="tab">
+                            <i class="material-icons">add</i> Add
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </div>     
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -28,6 +35,9 @@
                     <th>
                       Email
                     </th>                    
+                    <th>
+                        
+                      </th>                    
                   </thead>
                   <tbody>
                       <ng-container *ngFor="let user of getUsers();let i = index; let odd = odd;let even = even" >                  
@@ -36,7 +46,8 @@
                         <td [innerHtml]='user.firstName'></td>
                         <td [innerHtml]="user.lastName"></td>
                         <td [innerHtml]="user.email"></td>
-                                          </tr>
+                        <td ><a routerLink="/user/edit">Edit</a></td>
+                      </tr>
                     </ng-container>
                     
                   </tbody>

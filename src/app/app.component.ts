@@ -8,15 +8,27 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Hike Store';
+  viewHeader:string =""
 
-  constructor(private router: Router){
-
+  constructor(private router: Router){     
+    
+    
 
   }
 
+getHeader(): string
+{
+
+  if(this.router.url.includes("user")){
+    return "User Management";
+  }
+
+  return "Dashboard";
+  
+}
 
   changeRoute(urlRoute:string){
-    console.log("clicked " + urlRoute)
+    //console.log("clicked " + urlRoute)
     this.router.navigateByUrl(urlRoute);
   }
 }

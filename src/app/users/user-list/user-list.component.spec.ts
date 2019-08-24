@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
-import { AddUserComponent } from '../add-user/add-user.component';
+import { UserComponent } from '../add-user/add-user.component';
 import {UserRepositoryService} from "../../models/repository/user.repository.service";
 import { StaticdbService } from 'src/app/models/datasource/staticdb.service';
 

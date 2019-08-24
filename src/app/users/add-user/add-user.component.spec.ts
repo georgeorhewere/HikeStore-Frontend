@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddUserComponent } from './add-user.component';
+import { UserComponent } from './add-user.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { from } from 'rxjs';
@@ -8,21 +8,21 @@ import { from } from 'rxjs';
 
 
 describe('AddUserComponent', () => {
-  let component: AddUserComponent;
-  let fixture: ComponentFixture<AddUserComponent>;
+  let component: UserComponent;
+  let fixture: ComponentFixture<UserComponent>;
   let user:User = new User();
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddUserComponent ],
+      declarations: [ UserComponent ],
       imports:[ FormsModule, ReactiveFormsModule ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddUserComponent);
+    fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
     component.dataModel =  from([user]);
     fixture.detectChanges();
