@@ -33,9 +33,11 @@
               </div>
             </div>     
             
-            <button type="submit" class="btn btn-success pull-right" type="submit"
+            <button type="submit" class="btn btn-success " 
             [disabled]="formSubmitted && form.invalid"
             [class.btn-secondary]="formSubmitted && form.invalid" >Update Profile</button>
+
+            <button type="cancel" class="btn btn-default" routerLink="/users">Cancel</button>
             <div class="clearfix"></div>
           </form>
         </div>
