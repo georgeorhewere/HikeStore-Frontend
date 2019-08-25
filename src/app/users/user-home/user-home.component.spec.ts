@@ -24,9 +24,7 @@ describe('UserHomeComponent', () => {
       providers: [
         { 
         provide: UserRepositoryService, useValue: service
-        },
-        
-        
+        },             
        
         ]
     })

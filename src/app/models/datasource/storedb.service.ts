@@ -20,21 +20,22 @@ export class StoreDBService implements IConnectionService {
   public PROTOCOL = 'http';
   public PORT = 89; 
   /*auth_token: string;*/ 
+  client:HttpClient;
 
-  constructor(private http: HttpClient){
+  constructor(http: HttpClient){
     this.baseUrl = `${this.PROTOCOL}://${environment.apiUrl}/api/`;
     //this.baseUrl = `${this.PROTOCOL}://${location.hostname}:${this.PORT}/api/`;
-    
+    this.client = http;
   }
 
   getUsers(): Observable<User[]> {
 
-    return this.http.get<User[]>(this.baseUrl + 'users');
+    return this.client.get<User[]>(this.baseUrl + 'users');
   }
 
   addUser(user: User): Observable<User>
   {    
-    return this.http.post<User>(this.baseUrl + 'users', user);
+    return this.client.post<User>(this.baseUrl + 'users', user);
   }
   updateUser(user: User): any
   { 
@@ -53,13 +54,12 @@ export class StoreDBService implements IConnectionService {
   }
   getUser(id: number): Observable<User>
   {
-    console.log(id)
-    return this.http.get<User>(this.baseUrl + 'users/'+ id);
+    
+    return this.client.get<User>(this.baseUrl + 'users/'+ id);
   }
 
   deleteUser(id: number) :any
-  {
-    console.log(id)
+  {    
     return $.ajax({
       url: this.baseUrl+'users/'+id,
       type: 'DELETE',
@@ -73,7 +73,7 @@ export class StoreDBService implements IConnectionService {
     //return this.http.delete<User>(this.baseUrl + 'users/'+  id);
   }
 
-  private getOptions() {
+  getOptions() {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'

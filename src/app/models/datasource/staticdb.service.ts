@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IConnectionService } from './iconnection';
 import { User } from '../user';
 import { Observable, from } from 'rxjs';
-import { NgForOf } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { StoreDBService } from './storedb.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class IDBService {
 
 }
-export class StaticdbService implements IConnectionService{
+export class StaticdbService extends StoreDBService{
  
   PROTOCOL: string;
   PORT: number;
@@ -44,19 +43,17 @@ export class StaticdbService implements IConnectionService{
     }
   }
  
-  private getOptions() {
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }) };
+  getOptions() {
+    return super.getOptions();
   }
   
   updateUser(user: User): any
   { 
     
   }
-  constructor(private http: HttpClient) { 
-    
+  constructor(http: HttpClient) { 
+      super(http);
+
       this.users= new Array<User>( new User(1, "Kenny", "Rogers", "kennyrg@gmail.com"),
       new User(2,"Barry", "White", "barryr@gmail.com") ,
       new User(3, "Jane", "Fonda", "janefonda@gmail.com"),
