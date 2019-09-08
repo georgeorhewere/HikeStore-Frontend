@@ -1,0 +1,65 @@
+<div class="content">
+  <div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-tabs" style="background-color: rgb(37, 75, 124)">               
+                <div class="nav-tabs-navigation ">
+                    <div class="nav-tabs-wrapper">
+                      <span class="nav-tabs-title">Products</span>
+                      <ul class="nav nav-tabs pull-right" data-tabs="tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active" routerLink="/user/add" data-toggle="tab">
+                            <i class="material-icons">add</i> Add
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </div>     
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>
+                      ID
+                    </th>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Description
+                    </th>
+                    <th>
+                      Price
+                    </th>                    
+                    <th>
+                    Quantity    
+                    </th>                    
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let product of getProducts();let i = index; let odd = odd;let even = even" >                  
+                    <tr>
+                        <td [innerHtml]="product.productId"></td>
+                        <td [innerHtml]='product.name'></td>
+                        <td [innerHtml]='product.description'></td>
+                        <td [innerHtml]="product.price"></td>
+                        <td [innerHtml]="product.quantity"></td>
+                        <td >
+                          <div style="display: inline; margin-right: 5px"><a routerLink="/user/edit/{{product.productId}}">Edit</a></div>  
+                          <div style="display: inline;color: #9c27b0;"><a (click)="deleteUser(product.productId)">Delete</a></div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>   
+  </div>
+</div>

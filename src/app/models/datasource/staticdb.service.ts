@@ -51,20 +51,20 @@ export class StaticdbService extends StoreDBService {
 
   }
 
-  getProducts(): Observable<Product[]> {
-    return from([this.products]);
+  getProducts(): Product[] {
+    return this.products;
   }
-  setProducts(products:Product[]){
+  setProducts(products: Product[]) {
     this.products = products;
   }
 
   private initialize() {
     this.products = new Array<Product>(
-      new Product('Co-op Half Dome 2 Plus Tent', 40000, 6, 1, 'Backpacking Tents'),
-      new Product('Black Diamond Credo Pants', 40000, 6, 1, 'Men'),
-      new Product('Arcteryx - Norvan LD GTX', 40000, 6, 1, 'Shoes'),
-      new Product('Patagonia - P-6 Logo Responsibili-Tee - Men\'s', 40000, 6, 1, 'Men'),
-      new Product('Topo Athletic - Terraventure 2 - Men\'s', 40000, 6, 1, 'Shoes'),
+      new Product('Co-op Half Dome 2 Plus Tent', 40000, 6, 1, 'Backpacking Tents', 'blue', 1),
+      new Product('Black Diamond Credo Pants', 4000, 12, 1, 'Men', 'blue', 2),
+      new Product('Arcteryx - Norvan LD GTX', 5600, 65, 1, 'Shoes', 'blue', 3),
+      new Product('Patagonia - P-6 Logo Responsibili-Tee - Men\'s', 5000, 64, 1, 'Men', 'blue', 4),
+      new Product('Topo Athletic - Terraventure 2 - Men\'s', 20000, 45, 1, 'Shoes', 'blue', 5),
     );
   }
   constructor(http: HttpClient) {

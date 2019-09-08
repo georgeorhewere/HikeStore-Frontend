@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserModule } from './users/user.module';
+import { ProductModule } from './components/product/product.module';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
     DashboardComponent
   ],
   imports: [
@@ -20,7 +22,9 @@ import { UserModule } from './users/user.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    UserModule    
+    UserModule ,
+    ProductModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

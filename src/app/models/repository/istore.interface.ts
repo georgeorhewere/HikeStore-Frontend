@@ -1,3 +1,5 @@
+import { Paginator } from 'src/app/components/utilities/paginator';
+
 export interface IStoreInterface <T> {
 
     load(): void;
@@ -6,6 +8,7 @@ export interface IStoreInterface <T> {
     add(instance: T): number;
     update(instance: T): void;
     delete(id: number): boolean;
+    paginator: Paginator<T>;
     
 
 }
