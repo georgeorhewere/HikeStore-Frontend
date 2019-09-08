@@ -3,17 +3,19 @@ import { StoreDBService } from '../datasource/storedb.service';
 import { IStoreInterface } from './istore.interface';
 import { Product } from '../product';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductRepositoryService implements IStoreInterface<Product> {
   
+  private _products:Product[] = [];
   constructor(private db: StoreDBService) {
-
+    this.load();
   }
   
   list(): Product[] {
-    throw new Error('Method not implemented.');
+    return this._products;
   }
   add(instance: Product): number {
     throw new Error('Method not implemented.');
@@ -21,8 +23,10 @@ export class ProductRepositoryService implements IStoreInterface<Product> {
   update(instance: Product): void {
     throw new Error('Method not implemented.');
   }
-  load(): boolean {
-    throw new Error('Method not implemented.');
+  load(){
+    this.db.getProducts().subscribe((products) => {
+      this._products = products;
+    });
   }
   delete(id: number): boolean {
     throw new Error('Method not implemented.');

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {UserFormGroup } from '../../forms/iinput-form'
+import {UserFormGroup } from '../../components/forms/iinput-form'
 import {User} from "../../models/user";
 import {NgForm} from "@angular/forms";
 import {UserRepositoryService} from "../../models/repository/user.repository.service";

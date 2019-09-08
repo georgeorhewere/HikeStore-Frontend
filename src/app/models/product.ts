@@ -1,11 +1,13 @@
 export class Product {
 
-    constructor(public productId?: number,
-        public name?: string,
-        public description?: string,
+    constructor(
+        public name: string,        
+        public price: number,
+        public quantity: number = 5,
         public category: number = 1,
-        public price?: number,
-        public quantity?: number) {
+        public description?: string,        
+        public color?: string,
+        public productId?: number) {
 
     }
 }

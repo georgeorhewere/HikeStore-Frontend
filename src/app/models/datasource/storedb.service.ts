@@ -5,6 +5,7 @@ import { User } from '../user';
 import { HttpHeaders } from '@angular/common/http';
 import {IConnectionService} from './iconnection';
 import { environment } from 'src/environments/environment';
+import { Product } from '../product';
 
 
 
@@ -74,4 +75,9 @@ export class StoreDBService implements IConnectionService {
         'Content-Type': 'application/json'
       }) };
   }
+
+  getProducts(): Observable<Product[]> {
+   return from([]);
+  }
+
 }

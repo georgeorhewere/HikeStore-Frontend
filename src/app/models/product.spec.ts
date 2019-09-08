@@ -3,16 +3,16 @@ import { Product } from './product';
 
 describe('Product', () => {
   it('should create an instance', () => {
-    expect(new Product()).toBeTruthy();
+    expect(new Product('Nike Air Max 2',12000,28)).toBeTruthy();
   });
 it('shoud default category to one.', () => {
-  expect(new Product().category).toEqual(1);
+  expect(new Product('Nike Air Max 2',12000,28).category).toEqual(1);
 });
 });
 
 describe('Create Product', () => {
   it('should set all values from constructor', () => {
-    const product = new Product(1,'Nike Air Max 2', 'Nike durable hike boots', 1, 25000.00, 300);
+    const product = new Product('Nike Air Max 2',12000,28);
     expect(product).toBeTruthy();
     expect(product).toBeDefined();
     expect(product.name).toContain('Nike Air Max 2');
