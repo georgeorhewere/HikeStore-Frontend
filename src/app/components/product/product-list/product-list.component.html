@@ -21,8 +21,8 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-secondary">
-                <caption>{{paginator.itemCount()}} items.</caption>
+              <table class="table table-secondary m-0">
+                <caption>{{paginator.lastItemIndex}} of {{paginator.itemCount()}} products.</caption>
                 <thead class=" text-secondary">
                   <th>
                     ID
@@ -50,7 +50,7 @@
                       <td [innerHtml]="product.quantity"></td>
                       <td>
                         <div style="display: inline; margin-right: 5px"><a
-                            routerLink="/user/edit/{{product.productId}}">Edit</a></div>
+                            routerLink="/product/edit/{{product.productId}}">Edit</a></div>
                         <div style="display: inline;color: #9c27b0;"><a
                             (click)="deleteUser(product.productId)">Delete</a></div>
                       </td>
@@ -60,18 +60,14 @@
 
                 </tbody>
                 <tfoot>
-                  <tr>
-                    <td>
-                        <div class="btn-group float-right">
-                            <button *ngFor="let page of paginator.pageList()" (click)="changePage(page)"
-                              class="btn btn-outline-primary" [class.active]="page == paginator.selectedPage">
-                              {{page}}
-                            </button>
-                          </div>
-                    </td>
-                  </tr>         
                 </tfoot>
               </table>
+              <div class="btn-group float-right m-1">
+                  <button *ngFor="let page of paginator.pageList()" (click)="changePage(page)"
+                    class="btn btn-sm btn-outline-light" [class.active]="(page-1) == paginator.selectedPage">
+                    {{page}}
+                  </button>
+                </div>
             </div>
 
           </div>

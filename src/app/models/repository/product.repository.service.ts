@@ -29,8 +29,9 @@ export class ProductRepositoryService implements IStoreInterface<Product> {
   }
   load(){
     this._products = this.db.getProducts();
-    this.paginator = new Paginator<Product>(this._products,4);
+    this.paginator = new Paginator<Product>(this._products,5);
   }
+  
   delete(id: number): boolean {
     throw new Error('Method not implemented.');
   }

@@ -42,14 +42,14 @@ describe('Product.RepositoryService', () => {
       expect(service.paginator.pageCount()).toBeGreaterThanOrEqual(1);
     });
 
-    it('should return item count', () => {
+    it('should return number of items', () => {
       expect(service.paginator.itemCount()).toBeDefined('should have an instance');
       expect(service.paginator.itemCount()).toEqual(jasmine.any(Number));
     });
 
-    it('should return page item count ', () => {
-        expect(service.paginator.pageItemCount(1)).toBeDefined('should have an instance');
-        expect(service.paginator.pageItemCount(1)).toEqual(4);        
+    it('should return number of page items', () => {
+        expect(service.paginator.pageItemCount(0)).toBeDefined('should have an instance');
+        expect(service.paginator.pageItemCount(0)).toEqual(4);        
     });
 
     // it('should ',()=>{ });

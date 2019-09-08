@@ -65,6 +65,15 @@ export class StaticdbService extends StoreDBService {
       new Product('Arcteryx - Norvan LD GTX', 5600, 65, 1, 'Shoes', 'blue', 3),
       new Product('Patagonia - P-6 Logo Responsibili-Tee - Men\'s', 5000, 64, 1, 'Men', 'blue', 4),
       new Product('Topo Athletic - Terraventure 2 - Men\'s', 20000, 45, 1, 'Shoes', 'blue', 5),
+      new Product('Mountain Hardwear - Superforma Jacket', 8000, 5, 1, 'Jacket', 'black', 6),
+      new Product('Black Diamond - Crag Tee - Men\'s', 5000, 33, 1, 'T-Shirts', 'red', 7),
+      new Product('Meridian Line - Hip Bear Tee', 5000, 10, 1, 'T-Shirts', 'grey', 8),
+      new Product('Black Diamond - Crag Tee - Men\'s', 5000, 18, 1, 'T-Shirts', 'green', 9),
+      new Product('Outdoor Research - Ferrosi Shirt Jacket - Men', 16000, 52, 1, 'Jacket', 'grey', 10),
+      new Product('Mountain Hardwear - Kor Strata Jacket - Men', 15000, 45, 1, 'Jacket', 'blue', 11),
+      new Product('Nalgene Ultralite Wide-Mouth', 3000, 45, 1, 'Water Bottle - 32 fl. oz.', 'blue', 12),
+      new Product('Hydro Flask Standard-Mouth', 20000, 45, 1, ' Water Bottle with Flex Cap - 24 fl. oz.', 'white', 13),
+      new Product('REI Co-op Nalgene Wide-Mouth', 20000, 45, 1, 'Water Bottle - 48 fl. oz.', 'blue', 14),
     );
   }
   constructor(http: HttpClient) {
