@@ -19,5 +19,8 @@ export class ProductHomeComponent implements OnInit {
   get repository(){
     return this.service.productRepository.list();
   }
+  get paginator(){
+    return this.service.productRepository.paginator;
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { Paginator } from '../../utilities/paginator';
 
 @Component({
   selector: 'app-product-list',
@@ -10,6 +11,9 @@ export class ProductListComponent implements OnInit {
 
   @Input("products")
   productList: Product[];
+  
+  @Input("paginator")
+  paginator: Paginator<Product>;
 
   @Output()
   editProduct = new EventEmitter<number>();
@@ -26,7 +30,12 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts(): Product[] {
-    return this.productList;
+    let pageIndex = (this.paginator.selectedPage - 1) * this.paginator.itemsPerPage;
+    return this.productList.slice(pageIndex, pageIndex + this.paginator.itemsPerPage);
+  }
+
+  changePage(index:number){
+    this.paginator.selectedPage = index;
   }
 
 }
