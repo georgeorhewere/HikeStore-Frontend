@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { User } from '../user';
 import { HttpHeaders } from '@angular/common/http';
-import {IConnectionService} from "./iconnection";
+import {IConnectionService} from './iconnection';
 import { environment } from 'src/environments/environment';
 
 
 
-//const PROTOCOL = 'https';
-//const PORT = 44338;
+// const PROTOCOL = 'https';
+// const PORT = 44338;
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +18,13 @@ export class StoreDBService implements IConnectionService {
 
   public baseUrl: string;
   public PROTOCOL = 'http';
-  public PORT = 89; 
-  /*auth_token: string;*/ 
-  client:HttpClient;
+  public PORT = 89;
+  /*auth_token: string;*/
+  client: HttpClient;
 
-  constructor(http: HttpClient){
+  constructor(http: HttpClient) {
     this.baseUrl = `${this.PROTOCOL}://${environment.apiUrl}/api/`;
-    //this.baseUrl = `${this.PROTOCOL}://${location.hostname}:${this.PORT}/api/`;
+    // this.baseUrl = `${this.PROTOCOL}://${location.hostname}:${this.PORT}/api/`;
     this.client = http;
   }
 
@@ -33,45 +33,40 @@ export class StoreDBService implements IConnectionService {
     return this.client.get<User[]>(this.baseUrl + 'users');
   }
 
-  addUser(user: User): Observable<User>
-  {    
+  addUser(user: User): Observable<User> {
     return this.client.post<User>(this.baseUrl + 'users', user);
   }
-  updateUser(user: User): any
-  { 
+  updateUser(user: User): any {
     return $.ajax({
-      url: this.baseUrl+'users/'+user.userId,
-      data:JSON.stringify(user),      
-      headers:{ 'content-type':"application/json"},
+      url: this.baseUrl + 'users/' + user.userId,
+      data: JSON.stringify(user),
+      headers: { 'content-type': 'application/json'},
       type: 'PUT',
       success: function(result) {
           // Do something with the result
-          console.log("updated "+ user.userId)
-          
+          console.log('updated ' + user.userId);
+
       }
-    });   
-    //return this.http.put<User>(this.baseUrl + 'users', user);
+    });
+    // return this.http.put<User>(this.baseUrl + 'users', user);
   }
-  getUser(id: number): Observable<User>
-  {
-    
-    return this.client.get<User>(this.baseUrl + 'users/'+ id);
+  getUser(id: number): Observable<User> {
+
+    return this.client.get<User>(this.baseUrl + 'users/' + id);
   }
 
-  deleteUser(id: number) :any
-  {    
+  deleteUser(id: number): any {
     return $.ajax({
-      url: this.baseUrl+'users/'+id,
+      url: this.baseUrl + 'users/' + id,
       type: 'DELETE',
       success: function(result) {
           // Do something with the result
-          console.log("deleted "+ id)
-          
+          console.log('deleted ' + id);
+
       }
-  })
-  /* */
-    //return this.http.delete<User>(this.baseUrl + 'users/'+  id);
-  }
+  });
+
+}
 
   getOptions() {
     return {

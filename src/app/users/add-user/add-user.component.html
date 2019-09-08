@@ -37,7 +37,7 @@
             [disabled]="formSubmitted && form.invalid"
             [class.btn-secondary]="formSubmitted && form.invalid" >Save</button>
 
-            <button type="cancel" class="btn btn-default" routerLink="/users">Cancel</button>
+            <button type="cancel" class="btn btn-default" (click)="cancelAdd()">Cancel</button>
             <div class="clearfix"></div>
           </form>
         </div>

@@ -62,4 +62,9 @@ export class UserComponent implements OnInit {
     }
   }
 
+  cancelAdd(){
+    console.log("clear form and back to user list")
+    this.router.navigateByUrl("/users");
+  }
+
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:"hikestoreng.com"
+  apiUrl:"hikestoreng.com:89"
 };
 
 /*
