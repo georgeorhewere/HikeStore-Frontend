@@ -1,8 +1,8 @@
-import { FormControl, FormGroup, Validators } from "@angular/forms"
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 
 
-export class UserFormControl extends FormControl {
+export class StoreFormControl extends FormControl {
 
     label: string;
     modelProperty: string;
@@ -14,20 +14,21 @@ export class UserFormControl extends FormControl {
     }
 
     getValidationMessages() {
-        let messages: string[] = [];
+        const messages: string[] = [];
         if (this.errors) {
-            for(let errorName in this.errors) {
+            // tslint:disable-next-line: forin
+            for (const errorName in this.errors) {
                 switch (errorName) {
-                    case "required":
+                    case 'required':
                         messages.push(`You must enter a ${this.label}`);
                         break;
-                    case "minlength":
+                    case 'minlength':
                         messages.push(`A ${this.label} must be at least ${this.errors['minlength'].requiredLength} characters`);
                         break;
-                    case "maxlength":
+                    case 'maxlength':
                         messages.push(`A ${this.label} must be no more than ${this.errors['maxlength'].requiredLength} characters`);
                         break;
-                    case "pattern":
+                    case 'pattern':
                         messages.push(`The ${this.label} contains illegal characters`);
                         break;
                 }
@@ -41,27 +42,19 @@ export class UserFormGroup extends FormGroup {
     constructor() {
 
         super({
-            firstName: new UserFormControl("FirstName", "firstname", "", Validators.required),
-            lastName: new UserFormControl("LastName", "lastname", "", Validators.required),
-            email: new UserFormControl("Email", "email", "", Validators.required),
-            /*category: new UserFormControl("Category", "category", "",
-                Validators.compose([Validators.required,
-                    Validators.pattern("^[A-Za-z ]+$"),
-                    Validators.minLength(3),
-                    Validators.maxLength(10)])),
-            price: new UserFormControl("Price", "price", "",
-                Validators.compose([Validators.required,
-                    Validators.pattern("^[0-9\.]+$")]))*/
+            firstName: new StoreFormControl('FirstName', 'firstname', '', Validators.required),
+            lastName: new StoreFormControl('LastName', 'lastname', '', Validators.required),
+            email: new StoreFormControl('Email', 'email', '', Validators.required),
         });
 
     }
-    get userControls(): UserFormControl[] {
+    get userControls(): StoreFormControl[] {
         return Object.keys(this.controls)
-            .map(k => this.controls[k] as UserFormControl);
+            .map(k => this.controls[k] as StoreFormControl);
     }
 
     getFormValidationMessages(form: any): string[] {
-        let messages: string[] = [];
+        const messages: string[] = [];
         this.userControls.forEach(c => c.getValidationMessages()
             .forEach(m => messages.push(m)));
         return messages;
@@ -69,5 +62,12 @@ export class UserFormGroup extends FormGroup {
 }
 
 /*export interface IInputForm {
-
+            /*category: new UserFormControl("Category", "category", "",
+                Validators.compose([Validators.required,
+                    Validators.pattern("^[A-Za-z ]+$"),
+                    Validators.minLength(3),
+                    Validators.maxLength(10)])),
+            price: new UserFormControl("Price", "price", "",
+                Validators.compose([Validators.required,
+                    Validators.pattern("^[0-9\.]+$")]))
 }*/

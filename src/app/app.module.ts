@@ -9,12 +9,10 @@ import { UserModule } from './users/user.module';
 import { ProductModule } from './components/product/product.module';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

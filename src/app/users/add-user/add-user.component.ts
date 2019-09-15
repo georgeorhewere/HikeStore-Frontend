@@ -31,6 +31,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.form = new UserFormGroup();
+    
 
   }
 
@@ -57,7 +58,6 @@ export class UserComponent implements OnInit {
       // this.datamodel.addUser(this.newUser);
       // this.newUserEvent.emit(this.newUser);
       // this.newUser = new User();
-
       // this.formSubmitted = false;
     }
   }

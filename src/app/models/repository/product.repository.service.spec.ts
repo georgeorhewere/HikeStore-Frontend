@@ -32,7 +32,7 @@ describe('Product.RepositoryService', () => {
   describe('List Products', () => {
     it('should return list of products', () => {
       expect(service.list()).toBeDefined('should return an instance');
-      expect(service.list().length).toEqual(5);
+      expect(service.list().length).toEqual(14);
     });
   });
 
@@ -49,8 +49,9 @@ describe('Product.RepositoryService', () => {
 
     it('should return number of page items', () => {
         expect(service.paginator.pageItemCount(0)).toBeDefined('should have an instance');
-        expect(service.paginator.pageItemCount(0)).toEqual(4);        
+        expect(service.paginator.pageItemCount(0)).toEqual(5);        
     });
+    
 
     // it('should ',()=>{ });
     // it('should ',()=>{ });

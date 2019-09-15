@@ -30,11 +30,11 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts(): Product[] {
-    let pageIndex = this.paginator.selectedPage * this.paginator.itemsPerPage;
+    const pageIndex = this.paginator.selectedPage * this.paginator.itemsPerPage;
     return this.productList.slice(pageIndex, pageIndex + this.paginator.itemsPerPage);
   }
 
-  changePage(index:number){
+  changePage(index: number) {
     this.paginator.selectedPage = index - 1;
   }
 

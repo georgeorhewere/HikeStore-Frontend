@@ -1,0 +1,32 @@
+<div class="col-md-10" style="justify-content: center"> 
+  <div class="card">
+      <div class="card-header card-header-success">
+        <h4 class="card-title">Product</h4>
+        <p class="card-category">Manage Product</p>
+      </div>
+      <div class="card-body">
+        <form novalidate  [formGroup]="productForm" (ngSubmit)="submitForm(productForm)">
+          
+          <div class="row">
+            
+            <div class="col-md-6" *ngFor="let ctrl of productForm.productControls()">
+              <div class="form-group">
+                <label class="bmd-label-floating" [innerHtml]="ctrl.label"></label>
+                <input type="text" class="form-control" name="ctrl.label" [(ngModel)]="ctrl.value"
+                formControlName="{{ctrl.label}}">
+              </div>
+            </div> 
+          
+          </div>
+             
+          
+          <button type="submit" class="btn btn-success " 
+          [disabled]="formSubmitted && form.invalid"
+          [class.btn-secondary]="formSubmitted && form.invalid" >Save</button>
+
+          <button type="cancel" class="btn btn-default" (click)="cancelAdd()">Cancel</button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+</div>
