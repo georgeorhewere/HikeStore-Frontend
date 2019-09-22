@@ -15,11 +15,18 @@
                 formControlName="Name">
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
               <div class="form-group">
                 <label class="bmd-label-floating">Price</label>
                 <input type="text" class="form-control" name="price" [(ngModel)]="product.price"
                 formControlName="Price">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="bmd-label-floating">Quantity</label>
+                <input type="text" class="form-control" name="quantity" [(ngModel)]="product.quantity"
+                formControlName="Quantity">
               </div>
             </div>
           </div>
@@ -35,13 +42,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="bmd-label-floating">Quantity</label>
-                <input type="text" class="form-control" name="quantity" [(ngModel)]="product.quantity"
-                formControlName="Quantity">
-              </div>
-            </div>
+            
             <div class="col-md-6">
               <div class="form-group">
                 <label class="bmd-label-floating">Color</label>
