@@ -8,14 +8,14 @@ import { ProductHomeComponent } from './components/product/product-home/product-
 import { ProductFormComponent } from './components/product/product-form/product-form.component';
 
 const routes: Routes = [
-  { path:"home", component: DashboardComponent},
-  { path:"user/edit/:id", component: UserComponent},
-  { path:"user/add", component: UserComponent},  
-  { path:"users", component: UserHomeComponent},  
-  { path:"products", component: ProductHomeComponent},
-  { path:"products/add", component: ProductFormComponent},
-  { path:"products/edit/:id", component: ProductFormComponent},
-  { path:"**", redirectTo:"/home"},
+  { path: 'home', component: DashboardComponent},
+  { path: 'user/edit/:id', component: UserComponent},
+  { path: 'user/add', component: UserComponent},
+  { path: 'users', component: UserHomeComponent},
+  { path: 'products', component: ProductHomeComponent},
+  { path: 'products/add', component: ProductFormComponent},
+  { path: 'products/edit/:id', component: ProductFormComponent},
+  { path: '**', redirectTo: '/home'},
 ];
 
 @NgModule({

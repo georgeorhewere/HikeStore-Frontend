@@ -7,9 +7,8 @@ constructor() {
     super({
         Name: new StoreFormControl('Name', 'name', '', Validators.required),
         Description: new StoreFormControl('Description', 'description', '', Validators.required),
-        Price: new StoreFormControl('Price', 'price', '', Validators.compose([Validators.required,
-                                                                            Validators.pattern('^[0-9\.]+NGN')])),
-        Category: new StoreFormControl('Category', 'category', '', Validators.required),
+        Price: new StoreFormControl('Price', 'price', '', Validators.required),
+        Category: new StoreFormControl('Category', 'category', 1, Validators.required),
         Quantity: new StoreFormControl('Quantity', 'quantity', 5, Validators.required),
         Color: new StoreFormControl('Color', 'color', '', Validators.required),
     });

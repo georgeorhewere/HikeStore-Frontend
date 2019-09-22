@@ -9,14 +9,14 @@ import { Paginator } from 'src/app/components/utilities/paginator';
   providedIn: 'root'
 })
 export class ProductRepositoryService implements IStoreInterface<Product> {
-  paginator: Paginator<Product>;  
-  private _products:Product[] = [];
-  
-  
+  paginator: Paginator<Product>;
+  private _products: Product[] = [];
+
+
   constructor(private db: StoreDBService) {
     this.load();
   }
-  
+
   list(): Product[] {
     return this._products;
   }
@@ -27,11 +27,11 @@ export class ProductRepositoryService implements IStoreInterface<Product> {
   update(instance: Product): void {
     throw new Error('Method not implemented.');
   }
-  load(){
+  load() {
     this._products = this.db.getProducts();
-    this.paginator = new Paginator<Product>(this._products,5);
+    this.paginator = new Paginator<Product>(this._products, 5);
   }
-  
+
   delete(id: number): boolean {
     throw new Error('Method not implemented.');
   }
@@ -39,5 +39,5 @@ export class ProductRepositoryService implements IStoreInterface<Product> {
     throw new Error('Method not implemented.');
   }
 
-  
+
 }

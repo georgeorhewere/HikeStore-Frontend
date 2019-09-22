@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {UserFormGroup } from '../../components/forms/iinput-form';
-import {User} from '../../models/user';
-import {NgForm} from '@angular/forms';
-import {UserRepositoryService} from '../../models/repository/user.repository.service';
-import {Observable} from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserFormGroup } from '../../components/forms/iinput-form';
+import { User } from '../../models/user';
+import { NgForm } from '@angular/forms';
+import { UserRepositoryService } from '../../models/repository/user.repository.service';
+import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,11 +16,11 @@ export class UserComponent implements OnInit {
 
   constructor(private repository: UserRepositoryService, private activeRoute: ActivatedRoute, private router: Router) {
     let id = activeRoute.snapshot.params['id'];
-      if (id) {
-        this.editing = true;
-        this.newUser = repository.getUser(id);
-      }
-}
+    if (id) {
+      this.editing = true;
+      this.newUser = repository.getUser(id);
+    }
+  }
 
   form: UserFormGroup;
   newUser = new User();
@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.form = new UserFormGroup();
-    
+
 
   }
 
@@ -47,12 +47,12 @@ export class UserComponent implements OnInit {
           console.log('Update User');
           this.repository.updateUser(this.newUser);
         } else {
-      this.repository.addUser(this.newUser);
+          this.repository.addUser(this.newUser);
         }
-      this.router.navigateByUrl('/users');
+        this.router.navigateByUrl('/users');
 
       } catch (e) {
-            console.log(e);
+        console.log(e);
       }
 
       // this.datamodel.addUser(this.newUser);

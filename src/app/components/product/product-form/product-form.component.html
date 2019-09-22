@@ -8,17 +8,48 @@
         <form novalidate  [formGroup]="productForm" (ngSubmit)="submitForm(productForm)">
           
           <div class="row">
-            
-            <div class="col-md-6" *ngFor="let ctrl of productForm.productControls()">
+            <div class="col-md-6">
               <div class="form-group">
-                <label class="bmd-label-floating" [innerHtml]="ctrl.label"></label>
-                <input type="text" class="form-control" name="ctrl.label" [(ngModel)]="ctrl.value"
-                formControlName="{{ctrl.label}}">
+                <label class="bmd-label-floating">Name</label>
+                <input type="text" class="form-control" name="name" [(ngModel)]="product.name"
+                formControlName="Name">
               </div>
-            </div> 
-          
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Price</label>
+                <input type="text" class="form-control" name="price" [(ngModel)]="product.price"
+                formControlName="Price">
+              </div>
+            </div>
           </div>
-             
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Description</label>
+                <div class="form-group">
+                  <label class="bmd-label-floating">  </label>
+                  <textarea class="form-control" rows="3" name="description" [(ngModel)]="product.description" formControlName="Description" ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Quantity</label>
+                <input type="text" class="form-control" name="quantity" [(ngModel)]="product.quantity"
+                formControlName="Quantity">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="bmd-label-floating">Color</label>
+                <input type="text" class="form-control" name="color" [(ngModel)]="product.color"
+                formControlName="Color">
+              </div>
+            </div>
+          </div>
           
           <button type="submit" class="btn btn-success " 
           [disabled]="formSubmitted && form.invalid"
