@@ -8,8 +8,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent implements OnInit
-{
+export class ProductFormComponent implements OnInit {
 
   productForm: ProductFormGroup;
   product: Product = new Product();
@@ -19,24 +18,22 @@ export class ProductFormComponent implements OnInit
   }
 
   ngOnInit() {
-    this.productForm = new ProductFormGroup();    
+    this.productForm = new ProductFormGroup();
     this.product = new Product();
-    
+
   }
 
 
   submitForm(form: NgForm) {
-    console.log(form)
+    console.log(form);
     if (form.valid) {
       console.log('Save Product');
-    }
-    else
-    {
+    } else {
       console.log('Error saving product');
 
     }
 
-    
+
   }
 
 }

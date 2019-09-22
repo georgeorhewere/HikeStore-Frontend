@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
 
 
   constructor(private repository: UserRepositoryService, private activeRoute: ActivatedRoute, private router: Router) {
-    let id = activeRoute.snapshot.params['id'];
+    const id = activeRoute.snapshot.params['id'];
     if (id) {
       this.editing = true;
       this.newUser = repository.getUser(id);
