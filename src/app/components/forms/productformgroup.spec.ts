@@ -1,7 +1,7 @@
-import { Productformgroup } from './productformgroup';
+import { ProductFormGroup } from './productformgroup';
 
-describe('Productformgroup', () => {
+describe('ProductFormgroup', () => {
   it('should create an instance', () => {
-    expect(new Productformgroup()).toBeTruthy();
+    expect(new ProductFormGroup()).toBeTruthy();
   });
 });

@@ -7,10 +7,12 @@ constructor() {
     super({
         Name: new StoreFormControl('Name', 'name', '', Validators.required),
         Description: new StoreFormControl('Description', 'description', '', Validators.required),
-        Price: new StoreFormControl('Price', 'price', '', Validators.required),
-        Category: new StoreFormControl('Category', 'category', 1, Validators.required),
+        Price: new StoreFormControl('Price', 'price', '', 
+        Validators.compose([Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)\.?\d*$/)])),
+        Category: new StoreFormControl('Category', 'category', 1, 
+                            Validators.compose([Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]) ),
         Quantity: new StoreFormControl('Quantity', 'quantity', 5, Validators.required),
-        Color: new StoreFormControl('Color', 'color', '', Validators.required),
+        Color: new StoreFormControl('Color', 'color', '', Validators.compose([Validators.required,Validators.pattern('[a-zA-Z ]*')]) ),
     });
 }
 

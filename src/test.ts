@@ -19,6 +19,6 @@ getTestBed().initTestEnvironment(
 //const context = require.context('./', true, /\.spec\.ts$/);
 
 //single test -- specify the spec file
-const context = require.context('./', true, /product.repository.service.spec\.ts$/);
+const context = require.context('./', true, /product.form.component.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
