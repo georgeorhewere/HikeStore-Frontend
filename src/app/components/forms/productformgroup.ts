@@ -1,18 +1,20 @@
 import { FormGroup, Validators } from '@angular/forms';
 import { StoreFormControl } from './iinput-form';
+import { Product } from 'src/app/models/product';
 
 export class ProductFormGroup extends FormGroup {
 
-constructor() {
+constructor(private product:Product) {
     super({
-        Name: new StoreFormControl('Name', 'name', '', Validators.required),
-        Description: new StoreFormControl('Description', 'description', '', Validators.required),
-        Price: new StoreFormControl('Price', 'price', '', 
-        Validators.compose([Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)\.?\d*$/)])),
-        Category: new StoreFormControl('Category', 'category', 1, 
+        productId: new StoreFormControl('', 'productId', product.productId,null),
+        name: new StoreFormControl('Name', 'name', product.name, Validators.required),
+        description: new StoreFormControl('Description', 'description', product.description, Validators.required),
+        price: new StoreFormControl('Price', 'price', product.price, 
+        Validators.compose([Validators.required,Validators.pattern("^[0-9\.]+$")])),
+        category: new StoreFormControl('Category', 'category', product.category, 
                             Validators.compose([Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]) ),
-        Quantity: new StoreFormControl('Quantity', 'quantity', 5, Validators.required),
-        Color: new StoreFormControl('Color', 'color', '', Validators.compose([Validators.required,Validators.pattern('[a-zA-Z ]*')]) ),
+        quantity: new StoreFormControl('Quantity', 'quantity', product.quantity, Validators.required),
+        color: new StoreFormControl('Color', 'color', product.color, Validators.compose([Validators.required,Validators.pattern('[a-zA-Z ]*')]) ),
     });
 }
 

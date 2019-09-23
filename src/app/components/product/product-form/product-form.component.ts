@@ -18,17 +18,22 @@ export class ProductFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productForm = new ProductFormGroup();
     this.product = new Product();
+    this.productForm = new ProductFormGroup(this.product);
+    
 
   }
 
 
-  submitForm(form: NgForm) {
-    console.log(form);
-    if (form.valid) {
-      console.log('Save Product');
-    } else {
+  submitForm() {
+    
+    if (this.productForm.valid) 
+    {      
+      this.product = this.productForm.value;     
+      console.log("save form");
+    } 
+    else {
+      console.log(this.productForm.getFormValidationMessages(this.productForm));
       console.log('Error saving product');
 
     }
