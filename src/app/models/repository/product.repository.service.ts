@@ -22,7 +22,11 @@ export class ProductRepositoryService implements IStoreInterface<Product> {
   }
 
   add(instance: Product): number {
-    throw new Error('Method not implemented.');
+    let id;
+    this.db.addProduct(instance).subscribe((c)=>{
+      id = c.productId;
+    });
+    return id;
   }
   update(instance: Product): void {
     throw new Error('Method not implemented.');

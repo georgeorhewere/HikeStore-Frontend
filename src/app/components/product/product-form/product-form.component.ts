@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductFormGroup } from '../../forms/productformgroup';
 import { Product } from 'src/app/models/product';
 import { NgForm } from '@angular/forms';
+import { ProductRepositoryService } from 'src/app/models/repository/product.repository.service';
 
 @Component({
   selector: 'app-product-form',
@@ -11,16 +12,15 @@ import { NgForm } from '@angular/forms';
 export class ProductFormComponent implements OnInit {
 
   productForm: ProductFormGroup;
-  product: Product = new Product();
+  product: Product;
 
-  constructor() {
+  constructor(private service: ProductRepositoryService) {
 
   }
 
   ngOnInit() {
     this.product = new Product();
-    this.productForm = new ProductFormGroup(this.product);
-    
+    this.productForm = new ProductFormGroup(this.product);   
 
   }
 
@@ -31,8 +31,8 @@ export class ProductFormComponent implements OnInit {
     {      
       this.product = this.productForm.value;     
       console.log("save form");
-    } 
-    else {
+      this.service.add(this.product);
+    }else {
       console.log(this.productForm.getFormValidationMessages(this.productForm));
       console.log('Error saving product');
 

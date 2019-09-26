@@ -1,15 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductFormComponent } from './product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { StaticdbService } from 'src/app/models/datasource/staticdb.service';
+import { ProductRepositoryService } from 'src/app/models/repository/product.repository.service';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
   let fixture: ComponentFixture<ProductFormComponent>;
+  let client: HttpClient;  
+  let db:StaticdbService = new StaticdbService(client);
+
+  let service:ProductRepositoryService = new ProductRepositoryService(db) ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ProductFormComponent],
-      imports: [FormsModule, ReactiveFormsModule]
+      imports: [FormsModule, ReactiveFormsModule],
+      providers:[ {provide: ProductRepositoryService, useValue: service }]
     })
       .compileComponents();
   }));

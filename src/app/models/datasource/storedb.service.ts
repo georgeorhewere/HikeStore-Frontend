@@ -37,6 +37,7 @@ export class StoreDBService implements IConnectionService {
   addUser(user: User): Observable<User> {
     return this.client.post<User>(this.baseUrl + 'users', user);
   }
+
   updateUser(user: User): any {
     return $.ajax({
       url: this.baseUrl + 'users/' + user.userId,
@@ -78,6 +79,10 @@ export class StoreDBService implements IConnectionService {
 
   getProducts(): Product[] {
    return [];
+  }
+
+  addProduct(product:Product){
+    return this.client.post<Product>(this.baseUrl + 'products', product);
   }
 
 }

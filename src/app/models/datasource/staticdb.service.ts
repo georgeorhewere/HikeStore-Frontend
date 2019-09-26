@@ -58,6 +58,11 @@ export class StaticdbService extends StoreDBService {
     this.products = products;
   }
 
+  addProduct(product: Product): Observable<Product>{
+    this.products.push(product);
+    return from([product]);
+  }
+
   private initialize() {
     this.products = new Array<Product>(
       new Product('Co-op Half Dome 2 Plus Tent', 40000, 6, 1, 'Backpacking Tents', 'blue', 1),
