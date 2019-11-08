@@ -5,8 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { StaticdbService } from '../datasource/staticdb.service';
 
 describe('User.RepositoryService', () => {
-  let client: HttpClient;
-  
+  let client: HttpClient;  
   let db:StaticdbService = new StaticdbService(client);
   let service:UserRepositoryService = new UserRepositoryService(db) ;
 

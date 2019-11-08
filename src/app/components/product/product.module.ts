@@ -15,7 +15,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     ReactiveFormsModule,
     RouterModule
   ],
-  exports:[ProductHomeComponent]
+  exports:[ProductHomeComponent, ProductListComponent]
 
 })
 export class ProductModule { }

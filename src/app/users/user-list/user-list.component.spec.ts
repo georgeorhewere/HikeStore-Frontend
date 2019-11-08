@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
 
-import {UserRepositoryService} from "../../models/repository/user.repository.service";
+import { UserRepositoryService } from "../../models/repository/user.repository.service";
 import { StaticdbService } from 'src/app/models/datasource/staticdb.service';
 import { StoreDBService } from 'src/app/models/datasource/storedb.service';
 import { HttpClient } from '@angular/common/http';
@@ -20,23 +20,23 @@ describe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
   let client: HttpClient;
-  
-  let db:StaticdbService = new StaticdbService(client);
 
-  let service:UserRepositoryService = new UserRepositoryService(db) ;
+  let db: StaticdbService = new StaticdbService(client);
+
+  let service: UserRepositoryService = new UserRepositoryService(db);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-    imports:[ RouterTestingModule],
-      declarations: [ UserListComponent],
+      imports: [RouterTestingModule],
+      declarations: [UserListComponent],
       providers: [
-        { 
-        provide: UserRepositoryService, useValue: service
-        },        
-        ]
+        {
+          provide: UserRepositoryService, useValue: service
+        },
+      ]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
   }));
 
   beforeEach(() => {
@@ -45,9 +45,9 @@ describe('UserListComponent', () => {
     //activeRoute = TestBed.get(ActivatedRoute);
 
     component = fixture.componentInstance;
-    
+
     component.dataModel = service;
-  
+
     fixture.detectChanges();
   });
 

@@ -15,14 +15,21 @@ import { StoreDBService } from 'src/app/models/datasource/storedb.service';
 describe('AddUserComponent', () => {
   let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
+
   let user:User = new User();
-  let client: HttpClient;
-  
+
+  //set up db and client 
+  let client: HttpClient;  
   let db:StaticdbService = new StaticdbService(client);
 
+  // db model service
   let service:UserRepositoryService = new UserRepositoryService(db) ;
 
+  
+  // enviroment before each test
+  
   beforeEach(async(() => {
+    
     TestBed.configureTestingModule({
       declarations: [ UserComponent ],
       imports:[ FormsModule, ReactiveFormsModule, RouterTestingModule ],

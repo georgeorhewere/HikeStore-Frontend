@@ -11,8 +11,9 @@ export class StoreService {
 userRepository: UserRepositoryService;
 productRepository: ProductRepositoryService;
 
+
   constructor(private db: StaticdbService) {
-    this.userRepository = new UserRepositoryService(db);
-    this.productRepository = new ProductRepositoryService(db);
+    this.userRepository = new UserRepositoryService(this.db);
+    this.productRepository = new ProductRepositoryService(this.db);
    }
 }

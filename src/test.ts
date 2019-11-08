@@ -16,9 +16,9 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 // All test -- run all tests
-//const context = require.context('./', true, /\.spec\.ts$/);
+const context = require.context('./', true, /\.spec\.ts$/);
 
 //single test -- specify the spec file
-const context = require.context('./', true, /product.form.component.spec\.ts$/);
+//const context = require.context('./', true, /product.form.component.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);

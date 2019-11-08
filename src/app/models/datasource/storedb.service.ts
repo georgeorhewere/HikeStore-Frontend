@@ -81,7 +81,8 @@ export class StoreDBService implements IConnectionService {
    return [];
   }
 
-  addProduct(product:Product){
+  addProduct(product:Product): Observable<Product>{
+
     return this.client.post<Product>(this.baseUrl + 'products', product);
   }
 
