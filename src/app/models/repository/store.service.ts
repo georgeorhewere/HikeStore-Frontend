@@ -12,7 +12,7 @@ userRepository: UserRepositoryService;
 productRepository: ProductRepositoryService;
 
 
-  constructor(private db: StaticdbService) {
+  constructor(private db: StoreDBService) {
     this.userRepository = new UserRepositoryService(this.db);
     this.productRepository = new ProductRepositoryService(this.db);
    }

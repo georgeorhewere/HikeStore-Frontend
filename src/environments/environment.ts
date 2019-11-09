@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  //apiUrl:"localhost:89"
   apiUrl:"hikestoreng.com:89"
 };
 
@@ -15,3 +16,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+

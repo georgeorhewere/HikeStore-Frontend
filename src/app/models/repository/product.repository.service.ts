@@ -18,21 +18,25 @@ export class ProductRepositoryService implements IStoreInterface<Product> {
   }
 
   list(): Product[] {
+    
     return this._products;
   }
 
   add(instance: Product): number {
     let id;
-    this.db.addProduct(instance).subscribe((c)=>{
-      id = c.productId;
+    this.db.addProduct(instance).subscribe((c) => {
+      this._products.push(c);//id = c.productId;
     });
-    return id;
+    return 0;
   }
   update(instance: Product): void {
     throw new Error('Method not implemented.');
   }
   load() {
-    this._products = this.db.getProducts();
+    this.db.getProducts().subscribe((productList) => {
+      console.log(productList)
+      this._products = productList;
+    });
     this.paginator = new Paginator<Product>(this._products, 5);
   }
 

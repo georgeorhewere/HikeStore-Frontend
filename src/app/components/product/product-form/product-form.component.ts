@@ -28,10 +28,11 @@ export class ProductFormComponent implements OnInit {
   submitForm() {
     
     if (this.productForm.valid) 
-    {      
-      this.product = this.productForm.value;     
-      console.log("save form");
-      this.service.add(this.product);
+    {   
+      //use for edit   
+      //this.product = this.productForm.value;     
+      //console.log("save form");
+      this.service.add(this.productForm.value);
     }else {
       console.log(this.productForm.getFormValidationMessages(this.productForm));
       console.log('Error saving product');

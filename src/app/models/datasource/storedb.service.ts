@@ -77,8 +77,8 @@ export class StoreDBService implements IConnectionService {
       }) };
   }
 
-  getProducts(): Product[] {
-   return [];
+  getProducts(): Observable<Product[]> {
+   return this.client.get<Product[]>(this.baseUrl + 'products',this.getOptions());
   }
 
   addProduct(product:Product): Observable<Product>{

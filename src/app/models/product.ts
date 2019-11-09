@@ -8,6 +8,12 @@ export class Product {
         public description?: string,
         public color?: string,
         public productId?: number) {
+            
+
+
 
     }
+
+
+    
 }

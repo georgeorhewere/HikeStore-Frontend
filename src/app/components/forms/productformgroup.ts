@@ -5,8 +5,8 @@ import { Product } from 'src/app/models/product';
 export class ProductFormGroup extends FormGroup {
 
 constructor(private product:Product) {
-    super({
-        productId: new StoreFormControl('', 'productId', product.productId,null),
+    
+    super({        
         name: new StoreFormControl('Name', 'name', product.name, Validators.required),
         description: new StoreFormControl('Description', 'description', product.description, Validators.required),
         price: new StoreFormControl('Price', 'price', product.price, 
