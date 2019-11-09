@@ -35,8 +35,6 @@ describe('ProductHomeComponent', () => {
         {
           provide: ProductRepositoryService, useValue: service
         },
-
-
       ]
     })
       .compileComponents();
@@ -45,15 +43,13 @@ describe('ProductHomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductHomeComponent);
     component = fixture.componentInstance;
+    
+    service = TestBed.get(ProductRepositoryService);
+
     fixture.detectChanges();
   });
 
-  beforeEach(() => {
-    service = TestBed.get(ProductRepositoryService);
-    service.load();
-    service.paginator = new Paginator<Product>(service.list(), 5);
 
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

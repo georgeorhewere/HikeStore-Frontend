@@ -22,10 +22,10 @@
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-light m-0">
-                <caption>{{paginator.lastItemIndex}} of {{paginator.itemCount()}} products.</caption>
+            <caption>{{paginator.lastItemIndex}} of {{paginator.itemCount()}} products.</caption>
                 <thead class="text-secondary">
                   <th>
-                    
+
                   </th>
                   <th>
                     Name
@@ -56,18 +56,18 @@
                       </td>
                     </tr>
                   </ng-container>
-                  
+
 
                 </tbody>
                 <tfoot>
                 </tfoot>
               </table>
               <div class="btn-group float-right m-1">
-                  <button *ngFor="let page of paginator.pageList()" (click)="changePage(page)"
-                    class="btn btn-sm btn-outline-light" [class.active]="(page-1) == paginator.selectedPage">
-                    {{page}}
-                  </button>
-                </div>
+                <button *ngFor="let page of paginator.pageList()" (click)="changePage(page)"
+                  class="btn btn-sm btn-outline-light" [class.active]="(page-1) == paginator.selectedPage">
+                  {{page}}
+                </button>
+              </div> 
             </div>
 
           </div>

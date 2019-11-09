@@ -14,10 +14,11 @@ export class ProductHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   get repository(){
-    return this.service.productRepository.list();
+    return this.service.productRepository;
   }
   get paginator(){
     return this.service.productRepository.paginator;

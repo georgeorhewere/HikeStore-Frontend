@@ -38,20 +38,15 @@ describe('ProductListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
+    //model service
+    service = TestBed.get(ProductRepositoryService);
+    component.modelservice = service;
+
     fixture.detectChanges();
   });
 
   //set up service
-  beforeEach(() => {
-    service = TestBed.get(ProductRepositoryService);
-    service.load();
-    service.paginator = new Paginator<Product>(service.list(), 5);
-
-    component.productList = service.list();
-    component.paginator = service.paginator;
-
-
-  });
+ 
 
   it('should create', () => {
     expect(component).toBeTruthy();
