@@ -6,6 +6,7 @@ export class ProductFormGroup extends FormGroup {
 
 constructor(private product:Product) {
     
+    
     super({        
         name: new StoreFormControl('Name', 'name', product.name, Validators.required),
         description: new StoreFormControl('Description', 'description', product.description, Validators.required),

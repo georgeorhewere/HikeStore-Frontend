@@ -1,7 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-
-
 export class StoreFormControl extends FormControl {
 
     label: string;
@@ -20,7 +18,7 @@ export class StoreFormControl extends FormControl {
             for (const errorName in this.errors) {
                 switch (errorName) {
                     case 'required':
-                        messages.push(`You must enter a ${this.label}`);
+                        messages.push(`Required`);
                         break;
                     case 'minlength':
                         messages.push(`A ${this.label} must be at least ${this.errors['minlength'].requiredLength} characters`);
@@ -29,8 +27,13 @@ export class StoreFormControl extends FormControl {
                         messages.push(`A ${this.label} must be no more than ${this.errors['maxlength'].requiredLength} characters`);
                         break;
                     case 'pattern':
-                        messages.push(`The ${this.label} contains illegal characters`);
+                        messages.push(`Invalid ${this.label} `);
                         break;
+                    case 'invalidpassword':
+                            messages.push(`incorrect password`);
+                            break;
+
+
                 }
             }
         }
@@ -61,13 +64,15 @@ export class UserFormGroup extends FormGroup {
     }
 }
 
-/*export interface IInputForm {
-            /*category: new UserFormControl("Category", "category", "",
-                Validators.compose([Validators.required,
-                    Validators.pattern("^[A-Za-z ]+$"),
-                    Validators.minLength(3),
-                    Validators.maxLength(10)])),
-            price: new UserFormControl("Price", "price", "",
-                Validators.compose([Validators.required,
-                    Validators.pattern("^[0-9\.]+$")]))
-}*/
+export class PasswordValidator {
+    static checkPasswords(group: FormGroup) {
+        // here we have the 'passwords' group
+        return (control: FormControl): { [key: string]: any } => {
+            const password = group.get('password').value;
+            const confirmPassword = group.get('confirmPassword').value;
+            return password === confirmPassword ? null : { invalidpassword: true };
+        }
+    }
+}
+
+

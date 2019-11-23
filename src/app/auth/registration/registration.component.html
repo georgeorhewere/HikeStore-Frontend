@@ -1,0 +1,144 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h4 class="card-title">Sign Up</h4>
+            <p class="card-category">Complete the form</p>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="register(addUserForm)" novalidate [formGroup]="addUserForm">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">First Name</label>
+                    <input type="text" class="form-control" name="firstName" required formControlName="firstName">
+                    <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['firstName'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['firstName'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" required formControlName="lastName">
+                    <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['lastName'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['lastName'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Email address</label>
+                    <input type="email" class="form-control" name="email" required formControlName="email">
+                    <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['email'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['email'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Password</label>
+                    <input type="password" class="form-control" name="password" required formControlName="password">
+                    <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['password'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['password'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirmPassword" required
+                      formControlName="confirmPassword">
+                      <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['confirmPassword'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['confirmPassword'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Adress</label>
+                    <input type="text" class="form-control" name="address" required formControlName="address">
+                    <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['address'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['address'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">City</label>
+                    <input type="text" class="form-control" name="city" required formControlName="city">
+                    <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['city'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['city'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Country</label>
+                    <input type="text" class="form-control" name="country" required formControlName="country">
+                    <div class="text-danger"
+                      *ngIf="formSubmitted && addUserForm.controls['country'].invalid">
+                      <div *ngFor="let error of addUserForm.controls['country'].getValidationMessages()">
+                        <i class="fa fa-warning fa-sm"></i> {{error}}
+                      </div>
+                    </div>
+                    <input type="hidden" class="form-control" name="role" required formControlName="role">
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success pull-right">Sign Up</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--   <div class="col-md-4">
+          <div class="card card-profile">
+            <div class="card-avatar">
+              <a href="#pablo">
+                <img class="img" src="../assets/img/faces/marc.jpg" />
+              </a>
+            </div>
+            <div class="card-body">
+              <h6 class="card-category text-gray">CEO / Co-Founder</h6>
+              <h4 class="card-title">Alec Thompson</h4>
+              <p class="card-description">
+                Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+              </p>
+              <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+            </div>
+          </div>
+        </div> -->
+    </div>
+  </div>
+</div>

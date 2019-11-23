@@ -5,3 +5,4 @@
 @import "../src/assets/css/material-dashboard.css";
 @import "../src/assets/demo/demo.css";
 @import "../src/assets/fonts/material-icons/material-icons.css";
+@import '@angular/material/prebuilt-themes/purple-green.css';
