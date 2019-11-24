@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { User } from '../user';
 import { HttpHeaders } from '@angular/common/http';
-import {IConnectionService} from './iconnection';
+import { IConnectionService } from './iconnection';
 import { environment } from 'src/environments/environment';
 import { Product } from '../product';
+import { IAddUser } from '../users/iuser';
 
 
 
@@ -42,11 +43,11 @@ export class StoreDBService implements IConnectionService {
     return $.ajax({
       url: this.baseUrl + 'users/' + user.userId,
       data: JSON.stringify(user),
-      headers: { 'content-type': 'application/json'},
+      headers: { 'content-type': 'application/json' },
       type: 'PUT',
-      success: function(result) {
-          // Do something with the result
-          console.log('updated ' + user.userId);
+      success: function (result) {
+        // Do something with the result
+        console.log('updated ' + user.userId);
 
       }
     });
@@ -61,29 +62,37 @@ export class StoreDBService implements IConnectionService {
     return $.ajax({
       url: this.baseUrl + 'users/' + id,
       type: 'DELETE',
-      success: function(result) {
-          // Do something with the result
-          console.log('deleted ' + id);
+      success: function (result) {
+        // Do something with the result
+        console.log('deleted ' + id);
 
       }
-  });
+    });
 
-}
+  }
 
   getOptions() {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      }) };
+      })
+    };
   }
 
   getProducts(): Observable<Product[]> {
-   return this.client.get<Product[]>(this.baseUrl + 'products',this.getOptions());
+    return this.client.get<Product[]>(this.baseUrl + 'products', this.getOptions());
   }
 
-  addProduct(product:Product): Observable<Product>{
+  addProduct(product: Product): Observable<Product> {
 
     return this.client.post<Product>(this.baseUrl + 'products', product);
   }
+
+
+  // Authorization
+  registerUser(user: IAddUser): Observable<IAddUser> {
+    return this.client.post<IAddUser>(this.baseUrl + 'auth/register', user);
+  }
+
 
 }
