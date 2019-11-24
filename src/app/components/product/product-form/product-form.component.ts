@@ -13,6 +13,7 @@ export class ProductFormComponent implements OnInit {
 
   productForm: ProductFormGroup;
   product: Product;
+  formSubmitted:boolean;
 
   constructor(private service: ProductRepositoryService) {
 
@@ -25,7 +26,8 @@ export class ProductFormComponent implements OnInit {
   }
 
 
-  submitForm() {
+  submitForm(form) {
+    this.formSubmitted = true;
 
     if (this.productForm.valid) {
       //use for edit   
@@ -37,7 +39,9 @@ export class ProductFormComponent implements OnInit {
       console.log('Error saving product');
 
     }
+  }
 
+  cancelAdd(){
 
   }
 

@@ -12,30 +12,24 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./add-user.component.css']
 })
 export class UserComponent implements OnInit {
-
-
-  constructor(private repository: UserRepositoryService, private activeRoute: ActivatedRoute, private router: Router) {
-    const id = activeRoute.snapshot.params['id'];
-    if (id) {
-      this.editing = true;
-      this.newUser = repository.getUser(id);
-    }
-  }
-
+  
   form: UserFormGroup;
   newUser = new User();
   editing = false;
-
   formSubmitted = false;
+
+  constructor(private repository: UserRepositoryService, private activeRoute: ActivatedRoute, private router: Router) {
+    
+  }
+
+
 
 
   ngOnInit() {
     this.form = new UserFormGroup();
-
-
   }
 
-  submitForm(form: NgForm) {
+  submitForm(form:UserFormGroup) {
     this.formSubmitted = true;
 
     if (form.valid) {

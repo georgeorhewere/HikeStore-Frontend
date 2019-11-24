@@ -54,8 +54,8 @@
          
           
           <button type="submit" class="btn btn-success " 
-          [disabled]="formSubmitted && form.invalid"
-          [class.btn-secondary]="formSubmitted && form.invalid" >Save</button>
+          [disabled]="formSubmitted && productForm.invalid"
+          [class.btn-secondary]="formSubmitted && productForm.invalid" >Save</button>
 
           <button type="cancel" class="btn btn-default" (click)="cancelAdd()">Cancel</button>
           <div class="clearfix"></div>

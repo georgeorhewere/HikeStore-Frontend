@@ -2,10 +2,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { IAddUser, ROLES } from 'src/app/models/users/iuser';
 import { StoreFormControl, PasswordValidator } from './iinput-form';
 
-export class UserFormGroup extends FormGroup {
 
-
-}
 export class AddUserFormGroup extends FormGroup {
 
     constructor(private user: IAddUser) {

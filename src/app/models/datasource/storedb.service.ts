@@ -25,7 +25,7 @@ export class StoreDBService implements IConnectionService {
   client: HttpClient;
 
   constructor(http: HttpClient) {
-    this.baseUrl = `${this.PROTOCOL}://${environment.apiUrl}/api/`;
+    this.baseUrl = `${this.PROTOCOL}://${environment.apiUrl}:${this.PORT}/api/`;
     // this.baseUrl = `${this.PROTOCOL}://${location.hostname}:${this.PORT}/api/`;
     this.client = http;
   }
@@ -90,7 +90,7 @@ export class StoreDBService implements IConnectionService {
 
 
   // Authorization
-  registerUser(user: IAddUser): Observable<IAddUser> {
+  registerUser(user: IAddUser): Observable<IAddUser> {    
     return this.client.post<IAddUser>(this.baseUrl + 'auth/register', user);
   }
 
