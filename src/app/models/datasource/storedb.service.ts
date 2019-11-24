@@ -7,6 +7,7 @@ import { IConnectionService } from './iconnection';
 import { environment } from 'src/environments/environment';
 import { Product } from '../product';
 import { IAddUser } from '../users/iuser';
+import { IServiceResult } from '../repository/iservice-result';
 
 
 
@@ -83,15 +84,15 @@ export class StoreDBService implements IConnectionService {
     return this.client.get<Product[]>(this.baseUrl + 'products', this.getOptions());
   }
 
-  addProduct(product: Product): Observable<Product> {
+  addProduct(product: Product): Observable<IServiceResult> {
 
-    return this.client.post<Product>(this.baseUrl + 'products', product);
+    return this.client.post<IServiceResult>(this.baseUrl + 'products', product);
   }
 
 
   // Authorization
-  registerUser(user: IAddUser): Observable<IAddUser> {    
-    return this.client.post<IAddUser>(this.baseUrl + 'auth/register', user);
+  registerUser(user: IAddUser): Observable<IServiceResult> {
+    return this.client.post<IServiceResult>(this.baseUrl + 'auth/register', user);
   }
 
 

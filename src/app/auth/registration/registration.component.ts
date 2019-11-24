@@ -16,11 +16,13 @@ export class RegistrationComponent implements OnInit {
   public user: IAddUser;
   addUserForm: AddUserFormGroup;
   formSubmitted = false;
+  showNotification: boolean;
+  message: string = '';
 
 
-  constructor(private service : AuthService) {
+  constructor(private service: AuthService) {
 
-   }
+  }
 
 
   ngOnInit() {
@@ -33,14 +35,36 @@ export class RegistrationComponent implements OnInit {
     this.formSubmitted = true;
     if (this.addUserForm.valid) {
       this.user = form.value;
-      this.service.add(this.user);
+      this.service.add(this.user).subscribe((result) => {
+        
+        this.message = '';
 
-      console.log("submit");
+        if (result.success) {
+          this.message = '<div>Success! User Registered</div><div>You will be redirected login to access your account</div>';
+        } else {
+          (result.data.errors as Array<any>).forEach((x) => {
+            this.message +='<div>' + x.description + '</div>';
+          });
+        }
+
+        this.showNotification = true;
+        this.notificationTimeout();
+
+      }, (error) => {
+        console.log(error);
+        this.message = 'Error! Unable to save record.';
+        this.showNotification = true;
+        this.notificationTimeout();
+      });
+
     }
-
-
-
   }
 
+  private notificationTimeout() {
+    setTimeout(() => {
+      this.showNotification = false;
+    }, 5000);
+
+  }
 
 }

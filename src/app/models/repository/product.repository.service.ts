@@ -3,6 +3,8 @@ import { StoreDBService } from '../datasource/storedb.service';
 import { IStoreInterface } from './istore.interface';
 import { Product } from '../product';
 import { Paginator } from 'src/app/components/utilities/paginator';
+import { Observable } from 'rxjs';
+import { IServiceResult } from './iservice-result';
 
 
 @Injectable({
@@ -22,12 +24,10 @@ export class ProductRepositoryService implements IStoreInterface<Product> {
     return this._products;
   }
 
-  add(instance: Product): number {
-    let id;
-    this.db.addProduct(instance).subscribe((c) => {
-      this._products.push(c);//id = c.productId;
-    });
-    return 0;
+  add(instance: Product): Observable<IServiceResult> {
+    
+    return this.db.addProduct(instance);
+    
   }
   update(instance: Product): void {
     throw new Error('Method not implemented.');

@@ -3,7 +3,8 @@ import { IStoreInterface } from './istore.interface';
 import { IAddUser } from '../users/iuser';
 import { StoreDBService } from '../datasource/storedb.service';
 import { mapToMapExpression } from '@angular/compiler/src/render3/util';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { IServiceResult } from './iservice-result';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +26,10 @@ export class AuthService implements IStoreInterface<IAddUser> {
     throw new Error("Method not implemented.");
   }
   
-  add(instance: IAddUser): number {
-    let code = 0;
-    this.db.registerUser(instance).subscribe((result)=>{
-      code = result.role;
-    }, (error)=> {
-      console.log(error.message)
-    });
-   return  code;
+  add(instance: IAddUser): Observable<IServiceResult> 
+  {
+    return this.db.registerUser(instance);
+
   }
   update(instance: IAddUser): void {
     throw new Error("Method not implemented.");

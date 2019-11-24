@@ -4,6 +4,7 @@ import { Observable, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { StoreDBService } from './storedb.service';
 import { Product } from '../product';
+import { IServiceResult } from '../repository/iservice-result';
 
 @Injectable({
   providedIn: 'root'
@@ -58,9 +59,9 @@ export class StaticdbService extends StoreDBService {
     this.products = products;
   }
 
-  addProduct(product: Product): Observable<Product>{
+  addProduct(product: Product): Observable<IServiceResult>{
     this.products.push(product);
-    return from([product]);
+    return from([ { success: true, data: product , message:''} ]);
   }
 
   private initialize() {
